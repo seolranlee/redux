@@ -4,7 +4,7 @@ import './App.css';
 import Counter from './components/Counter';
 import PaletteContainer from './containers/PaletteContainer';
 import CounterContainer from './containers/CounterContainer';
-import WaitingList from './components/WaitingList';
+import WaitingListContainer from './containers/WatingListContainer';
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         <PaletteContainer />
         <CounterContainer />
-        <WaitingList />
+        <WaitingListContainer />
       </div>
     );
   }

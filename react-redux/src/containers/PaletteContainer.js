@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Palette from '../components/Palette';
 import { changeColor } from '../store/modules/counter';
+import {bindActionCreators} from 'redux';
 
 class PaletteContainer extends Component {
     handleSelect = color => {
@@ -19,15 +20,20 @@ class PaletteContainer extends Component {
 }
 
 //현재 상태를 props로 넣어준다.
-const mapStateToProps = (state) => ({
-    color: state.counter.color
+const mapStateToProps = ({counter}) => ({
+    color: counter.color
 });
 
 // update하는 함수를 props로 넣어준다.
 const mapDispatchToProps = dispatch => ({
     chageColor: color => dispatch(changeColor(color))
 });
+
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    ({counter}) => ({
+        color: counter.color
+    }),
+    dispatch => ({
+        chageColor: color => dispatch(changeColor(color))
+    })
 )(PaletteContainer);
